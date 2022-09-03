@@ -1,6 +1,6 @@
 <script type="ts">
 	import type { Results } from 'src/global';
-	import { Icon, Heart } from 'svelte-hero-icons';
+	import { Icon, Heart, Star } from 'svelte-hero-icons';
 
 	import Button from './Button.svelte';
 
@@ -10,7 +10,7 @@
 <div class="card">
 	<div class="detail-holder">
 		<div class="rating">
-			<span>Star 7.9</span>
+			<span class="star-container"><Icon src={Star} size="18" style="color:white" /> 7.9</span>
 			<span>18+</span>
 		</div>
 		<Icon src={Heart} size="25" style="color:white" />
@@ -21,7 +21,7 @@
 	<div class="bottom">
 		<!-- <p>{movie.title}</p> -->
 		<div class="button">
-			<Button name="View Details" />
+			<a data-sveltekit-prefetch href="/{movie.id}"><Button name="View Details" /></a>
 		</div>
 	</div>
 </div>
@@ -30,8 +30,6 @@
 	.card {
 		position: relative;
 		border-radius: 15px;
-	}
-	.card:hover {
 	}
 	.detail-holder {
 		position: absolute;
@@ -47,9 +45,9 @@
 		background-color: rgba(0, 0, 0, 0.5);
 		cursor: pointer;
 	}
-	.card:hover p {
+	/* .card:hover p {
 		display: none;
-	}
+	} */
 	.card:hover .button {
 		display: block;
 	}
@@ -77,17 +75,22 @@
 		width: 100%;
 		bottom: 20px;
 	}
-	p {
+	/* p {
 		font-size: 20px;
 		font-weight: bold;
 		font-family: 'Courier New', Courier, monospace;
 		letter-spacing: 2px;
 		overflow: text-wrap;
-	}
+	} */
 	.button {
 		display: none;
 		width: 200px;
 		margin: 0 auto;
 		z-index: 2;
+	}
+
+	.star-container {
+		display: flex;
+		align-items: center;
 	}
 </style>

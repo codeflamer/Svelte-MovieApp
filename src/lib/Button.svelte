@@ -24,4 +24,10 @@
 		cursor: pointer;
 		opacity: 0.9;
 	}
+	@media (max-width: 425px) {
+		button {
+			font-size: 15px;
+			padding: 10px 10px;
+		}
+	}
 </style>

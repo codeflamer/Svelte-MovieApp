@@ -1,9 +1,10 @@
 import { error } from '@sveltejs/kit';
-import type { Movies } from 'src/global';
+import type { EnvVariable, Movies } from 'src/global';
 
 export async function load() {
+	const variable: EnvVariable = import.meta.env.VITE_API_KEY;
 	const res = await fetch(
-		'https://api.themoviedb.org/3/movie/upcoming?api_key=35703dca2837ef4cd5b1fd4ca47151ce&language=en-US&page=1'
+		`https://api.themoviedb.org/3/movie/upcoming?api_key=${variable}&language=en-US&page=1`
 	);
 	const movies: Movies = await res.json();
 	// console.log(movies);

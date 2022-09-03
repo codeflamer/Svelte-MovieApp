@@ -19,7 +19,7 @@
 
 <section class="hero-image">
 	<img
-		src="https://image.tmdb.org/t/p/w500/{firstMovie.backdrop_path}"
+		src="https://image.tmdb.org/t/p/original/{firstMovie.backdrop_path}"
 		alt="Hero pic"
 		loading="lazy"
 	/>
@@ -35,7 +35,7 @@
 			>
 		</div>
 		<div class="button">
-			<Button name="View Details" />
+			<a data-sveltekit-prefetch href="/{firstMovie.id}"><Button name="View Details" /></a>
 		</div>
 	</div>
 	<div class="black-blend" />
@@ -60,10 +60,12 @@
 	.description {
 		max-width: 500px;
 		position: absolute;
-		top: 130px;
+		top: 15vh;
 		z-index: 2;
-		left: 30px;
+		margin: 30px;
+		left: 0;
 	}
+
 	h2 {
 		text-transform: uppercase;
 		font-size: 60px;
@@ -75,7 +77,26 @@
 		margin-top: 20px;
 		margin-bottom: 30px;
 	}
-	/* .button {
-		width: 300px;
-	} */
+	.button {
+		max-width: 500px;
+	}
+
+	@media (max-width: 768px) {
+		.description {
+			top: 15vh;
+		}
+		h2 {
+			font-size: 40px;
+			letter-spacing: 1px;
+		}
+	}
+	@media (max-width: 425px) {
+		h2 {
+			font-size: 35px;
+			letter-spacing: 1px;
+		}
+		.description {
+			font-size: 15px;
+		}
+	}
 </style>

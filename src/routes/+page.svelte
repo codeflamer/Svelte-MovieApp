@@ -6,14 +6,12 @@
 	interface Data {
 		movies: Movies;
 	}
-	// let variable: EnvVariable = import.meta.env.VITE_API_KEY;
+
 	export let data: Data;
-	console.log(data.movies);
 </script>
 
 <HeroBg firstMovie={data.movies.results[1]} />
 <div class="container">
-	<!-- <section class="later">Later Things</section> -->
 	<section class="movies">
 		<MoviesContainer movies={data.movies} />
 	</section>
@@ -24,11 +22,13 @@
 		padding: 20px 30px;
 	}
 
-	.later {
-		height: 100px;
-		border: 1px solid red;
-	}
 	.movies {
 		margin-top: 20px;
+	}
+
+	@media (max-width: 425px) {
+		.container {
+			padding: 20px 10px;
+		}
 	}
 </style>

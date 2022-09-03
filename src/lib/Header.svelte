@@ -1,20 +1,23 @@
 <script>
-	import { Icon, LocationMarker, Filter } from 'svelte-hero-icons';
+	import { Icon, LocationMarker, Menu } from 'svelte-hero-icons';
 	import Search from './Search.svelte';
 </script>
 
 <header>
 	<nav>
 		<div class="left-hand">
-			<div class="logo">CodeFlamer</div>
+			<div class="logo"><a data-sveltekit-prefetch href="/">CodeFlamer</a></div>
 			<div class="location"><Icon src={LocationMarker} size="18" />Russia</div>
 		</div>
 		<div class="search"><Search /></div>
 		<ul>
-			<li><a sveltekit:prefetch href="/">Popular</a></li>
-			<li><a sveltekit:prefetch href="/coming-soon">Coming Soon</a></li>
-			<li><a sveltekit:prefetch href="/top-rated">Top Rated</a></li>
+			<li><a data-sveltekit-prefetch href="/">Popular</a></li>
+			<li><a data-sveltekit-prefetch href="/coming-soon">Coming Soon</a></li>
+			<li><a data-sveltekit-prefetch href="/top-rated">Top Rated</a></li>
 		</ul>
+		<div class="togglebar">
+			<Icon src={Menu} size="20" />
+		</div>
 	</nav>
 </header>
 
@@ -22,6 +25,7 @@
 	@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap');
 	header {
 		background-color: #2e2e2e;
+		overflow: hidden;
 	}
 	nav {
 		display: flex;
@@ -51,6 +55,12 @@
 		color: white;
 		scale: 1.1;
 	}
+	.togglebar {
+		display: none;
+	}
+	.togglebar:hover {
+		cursor: pointer;
+	}
 	.left-hand {
 		display: flex;
 		flex: 1;
@@ -73,5 +83,16 @@
 		letter-spacing: 6px;
 		font-family: 'Dancing Script', cursive;
 		font-size: 20px;
+	}
+	@media (max-width: 768px) {
+		.search {
+			display: none;
+		}
+		.togglebar {
+			display: flex;
+		}
+		ul {
+			display: none;
+		}
 	}
 </style>
